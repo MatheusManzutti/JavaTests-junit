@@ -7,7 +7,7 @@ import entities.Account;
 
 public class AccountTests {
 
-	//fazendo teste unitário
+	//fazendo 1º teste unitário
 	@Test //org.junit.jupiter.api.Test
 	public void depositShouldIncreseBalanceWhenPositiveAmount() {
 		
@@ -24,5 +24,20 @@ public class AccountTests {
 		//Padrão Assert - Declarar o que vai acontecer
 		//Assertions Biblioteca
 		Assertions.assertEquals(expectedValue, acc.getBalance()); //assertEquals(expected, actual). Se o valor esperado "expectedValue" será igual ao valor do saldo da conta "acc.deposit(amount)" 
+	}
+	
+	@Test //fazendo o 2º teste unitário
+	public void depositShouldDoNothingWhenNegativeAmount() {
+
+		//Padrão Arrange
+		double expectedValue = 100.0; //valor esperado ao fazer o test
+		Account acc = new Account(1L, expectedValue); //criar uma conta já com um valor no saldo 
+		double amount = -200.0; //fazer um depósito -200.0
+		
+		//Padrão Act - Executar as ações necessárias
+		acc.deposit(amount); //depositou -200.0
+		
+		//Padrão Assert - Declarar o que vai acontecer
+		Assertions.assertEquals(expectedValue, acc.getBalance());
 	}
 }
